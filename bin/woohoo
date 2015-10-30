@@ -8,6 +8,7 @@ var debug = require('diagnostics')('woohoo:cli')
   , Primus = require('primus')
   , one = require('one-time')
   , fs = require('fs')
+  , ordinal = require('ordinal').english
   , primus;
 
 //
@@ -61,7 +62,7 @@ primus.once('data', function data(payload) {
     debug('played %s', payload.play);
 
     console.log('');
-    console.log('Woohoo! Congratulations! You\'re the '+ payload.count +'th who woohoo\'d');
+    console.log('Woohoo! Congratulations! You\'re the '+ ordinal(payload.count) +' who woohoo\'d');
     console.log('');
 
     primus.end();
